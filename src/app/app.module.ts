@@ -12,6 +12,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FeedPageModule } from '../pages/feed/feed.module';
 import { IntroPageModule } from '../pages/intro/intro.module';
+import { MovieProvider } from '../providers/movie/movie';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { ConfigProvider } from '../providers/config/config'; // no curso não explicava isso.
+import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
+import { PerfilPage } from '../pages/perfil/perfil';
+import { SobrePage } from '../pages/sobre/sobre';
 
 @NgModule({
   declarations: [
@@ -19,13 +26,18 @@ import { IntroPageModule } from '../pages/intro/intro.module';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    ConfiguracoesPage,
+    PerfilPage,
+    SobrePage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     FeedPageModule,
-    IntroPageModule
+    IntroPageModule,
+    HttpModule,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -33,12 +45,17 @@ import { IntroPageModule } from '../pages/intro/intro.module';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    ConfiguracoesPage,
+    PerfilPage,
+    SobrePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    MovieProvider,
+    ConfigProvider
   ]
 })
 export class AppModule {}
